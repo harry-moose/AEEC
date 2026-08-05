@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://YOUR-USERNAME.github.io/aeec/sitemap.xml
+Sitemap: https://harry-moose.github.io/AEEC/sitemap.xml
