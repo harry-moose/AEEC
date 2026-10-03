@@ -1,3 +1,5 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Childcare &amp; Kindergarten in Altona VIC 3018 | Altona Early Education Centre</title>
 <meta name="description" content="Boutique family-owned childcare &amp; funded kindergarten at 40 Sargood St, Altona VIC 3018. Ages 6 weeks–6 years, Beach Kinder, chef-cooked meals, 7am–6pm Mon–Fri. Book a tour: (03) 9398 5229." />
 <link rel="canonical" href="https://harry-moose.github.io/AEEC/" />
@@ -681,6 +683,22 @@
     #tommyLoader{ animation:tlOut .3s ease .25s forwards; }
     #tommyLoader img, #tommyLoader .tl-dots span{ animation:none; }
   }
+  /* ---- animated mobile nav ---- */
+  .burger{ transition: background .2s ease, color .2s ease, transform .15s ease, box-shadow .2s ease; }
+  .burger[aria-expanded="true"]{ background: var(--teal); color:#fff; transform: scale(1.05); box-shadow: 2px 3px 0 rgba(24,84,80,.28); }
+  nav.main.open{ animation: navDrop .3s cubic-bezier(.2,.75,.3,1) both; transform-origin: top center; }
+  nav.main.open > *{ animation: navItem .34s ease both; }
+  nav.main.open > *:nth-child(1){ animation-delay:.04s }
+  nav.main.open > *:nth-child(2){ animation-delay:.08s }
+  nav.main.open > *:nth-child(3){ animation-delay:.12s }
+  nav.main.open > *:nth-child(4){ animation-delay:.16s }
+  nav.main.open > *:nth-child(5){ animation-delay:.20s }
+  nav.main.open > *:nth-child(6){ animation-delay:.24s }
+  nav.main.open > *:nth-child(7){ animation-delay:.28s }
+  nav.main.open > *:nth-child(8){ animation-delay:.32s }
+  @keyframes navDrop{ from{ opacity:0; transform: translateY(-10px) scaleY(.97); } to{ opacity:1; transform:none; } }
+  @keyframes navItem{ from{ opacity:0; transform: translateY(-8px); } to{ opacity:1; transform:none; } }
+  @media (prefers-reduced-motion: reduce){ .burger{transition:none} nav.main.open, nav.main.open > *{ animation:none } }
 </style>
 
 <!-- ================= HEADER ================= -->
@@ -1289,9 +1307,10 @@
   burger.addEventListener("click", function () {
     var open = nav.classList.toggle("open");
     burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.textContent = open ? "Close ✕" : "Menu ☰";
   });
   nav.addEventListener("click", function (e) {
-    if (e.target.tagName === "A") { nav.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); }
+    if (e.target.tagName === "A") { nav.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); burger.textContent = "Menu ☰"; }
   });
 
   // scroll-expansion opener
